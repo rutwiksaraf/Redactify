@@ -10,3 +10,6 @@ spacy = "*"
 
 [requires]
 python_version = "3.11"
+
+[scripts]
+download-model = "python -m spacy download en_core_web_lg"
