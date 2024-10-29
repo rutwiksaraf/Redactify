@@ -6,7 +6,7 @@ import os
 import sys
 from spacy.matcher import PhraseMatcher
 
-nlp = spacy.load('en_core_web_lg')
+nlp = spacy.load('en_core_web_md')
 
 # Reading input files:
 def readingInput(file_type):
