@@ -29,15 +29,31 @@ def redact_names(text, doc, stats):
             stats['entities'].append((entity.text, start, end, "PERSON"))
     return ''.join(redacted_text)
 
+from spacy.matcher import Matcher
+
 def redact_dates(text, doc, stats):
+    matcher = Matcher(doc.vocab)
+    date_patterns = [
+        [{"TEXT": {"REGEX": r"(\d{1,2}(st|nd|rd|th)?)"}}, {"LOWER": {"IN": ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"]}}, {"TEXT": {"REGEX": r"\d{4}"}}],
+        [{"LOWER": {"IN": ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"]}}, {"TEXT": {"REGEX": r"\d{1,2}(st|nd|rd|th)?"}}, {"TEXT": {"REGEX": r"\d{4}"}}],
+        [{"TEXT": {"REGEX": r"\d{1,2}/\d{1,2}/\d{4}"}}],
+    ]
+    
+    matcher.add("DATE", date_patterns)
+    matches = matcher(doc)
+    
     redacted_text = list(text)
-    for entity in doc.ents:
-        if entity.label_ == "DATE":
-            start, end = entity.start_char, entity.end_char
-            redacted_text[start:end] = "█" * (end - start)
-            stats['dates'] += 1
-            stats['entities'].append((entity.text, start, end, "DATE"))
+    
+    # Replace matched dates with redaction blocks
+    for match_id, start, end in matches:
+        span = doc[start:end]
+        redacted_text[span.start_char:span.end_char] = "█" * (span.end_char - span.start_char)
+        stats["dates"] += 1
+        stats["entities"].append((span.text, span.start_char, span.end_char, "DATE"))
+
     return ''.join(redacted_text)
+
+
 
 def redact_addresses(text, doc, stats):
     redacted_text = list(text)
