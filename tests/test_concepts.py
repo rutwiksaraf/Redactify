@@ -1,7 +1,7 @@
 import spacy
 from redactor import redact_concepts
 
-nlp = spacy.load('en_core_web_md')
+nlp = spacy.load('en_core_web_lg')
 
 def test_redact_concepts():
     text = "Artificial intelligence is evolving rapidly."

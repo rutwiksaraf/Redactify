@@ -1,7 +1,7 @@
 import spacy
 from redactor import redact_names
 
-nlp = spacy.load('en_core_web_md')
+nlp = spacy.load('en_core_web_lg')
 
 def test_redact_names():
     text = "John went to the store."

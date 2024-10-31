@@ -1,7 +1,7 @@
 import spacy
 from redactor import redact_dates
 
-nlp = spacy.load('en_core_web_md')
+nlp = spacy.load('en_core_web_lg')
 
 def test_redact_dates():
     text = "The event is scheduled on 5th October 2023."

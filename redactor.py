@@ -1,13 +1,13 @@
 import argparse
 import glob
 import spacy
-import en_core_web_md
+import en_core_web_lg
 import re
 import os
 import sys
 from spacy.matcher import PhraseMatcher
 
-nlp = en_core_web_md.load()
+nlp = en_core_web_lg.load()
 
 # Reading input files:
 def readingInput(file_type):

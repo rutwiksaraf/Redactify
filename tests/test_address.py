@@ -1,7 +1,7 @@
 import spacy
 from redactor import redact_addresses
 
-nlp = spacy.load('en_core_web_md')
+nlp = spacy.load('en_core_web_lg')
 
 def test_redact_addresses():
     text = "I live in New York."
