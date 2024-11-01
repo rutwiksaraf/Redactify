@@ -139,14 +139,14 @@ For this project, a **concept** is defined as any idea or theme represented by k
 
 ### Required installation commands
 
-- Install spacy: `Pip Install Spacy`
-- Install the spacy model: `Python -M Spacy Download EN_CORE_WEB_LG`
+- Install spacy: `pip install spacy`
+- Install the spacy model: `python -m spacy download en_core_web_lg`
 
 ### How to run the code
 
 To execute the program and redact sensitive information, run the following command: 
 
-`Python Main.Py --Input "*.Txt" --Names --Dates --Addresses --Phones --Concept "Confidential" --Output "./Censored_Files" --Stats "Stdout"`
+`python redactor.py --input '*.txt' --names --concept 'burrito' --concept 'prison' --output 'files/' --stats stdout`
 
 ### Test case explanations
 
