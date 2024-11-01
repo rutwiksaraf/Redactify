@@ -60,7 +60,7 @@ This project is a Python application designed to redact sensitive information (s
 
 This structured approach ensures a modular, clear, and effective method for redacting sensitive information from text files, allowing for flexibility and extensibility as needed. 
 
-### FUNCTION OVERVIEW
+### Function Overview
 
 1. **reading_input(file_type)**: 
 The readingInput function processes multiple files that match a specified pattern (like *.txt) from the directory, storing their content in a dictionary. It starts by calling glob.glob(file_type), which searches for files that match the given file_type pattern (e.g., all .txt files), returning a list of file names that match. The function then initializes an empty dictionary called content, which will hold each file's content under its file name as a key-value pair. For each file found, it opens the file in read mode ('r') with UTF-8 encoding, which ensures consistent handling of text across various languages and special characters. Using a context manager (with open(...) as f:), it reads the entire content of each file and stores this content in the content dictionary with the file name as the key. After processing all files, the function returns the content dictionary, which holds all file data organized by file name. This design makes it easy to collect, store, and access textual data from multiple sources at once, which is ideal for applications requiring batch processing of text files or organized preprocessing for larger textual datasets.
