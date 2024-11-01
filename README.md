@@ -180,7 +180,7 @@ The `test_redact_phones()` function tests the `redact_phonenumbers()` function t
 - **Expected output**: "My phone number is ████████████."
 - **Test checks**: The function confirms that the phone number "123-456-7890" is fully redacted. It also checks that `stats['phones']` is incremented to 1 and that the entity is logged as "phone" with its position and entity type in `stats`. 
 
-![Alt text](docs/testcase_passed.png)
+![Alt text](docs/Testcase_passed.png)
 
 ### Assumptions
 
