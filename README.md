@@ -147,6 +147,9 @@ To execute the program and redact sensitive information, run the following comma
 
 `python redactor.py --input '*.txt' --names --concept 'burrito' --concept 'prison' --output 'files/' --stats stdout`
 
+### How to run Test Cases
+`pipenv run python -m pytest`
+
 ### Test case explanations
 
 #### Address test case
@@ -189,8 +192,9 @@ The `test_redact_phones()` function tests the `redact_phonenumbers()` function t
 4. Dates use common english-language date formats. 
 
 ### Known bugs and issues
-1. If file formats vary widely or include unexpected entity types, redaction may not be fully accurate. 
-2. Text formatting may be disrupted in the final output, especially when multiple entity types are redacted close together. 
-3. Matching conceptual terms is case-sensitive and dependent on the accuracy of phrase matching. 
+1. The hardcoded patterns for dates, phone numbers, and addresses may not cover all possible formats encountered in real-world data. For instance, international phone number formats are not fully supported.
+2. If file formats vary widely or include unexpected entity types, redaction may not be fully accurate. 
+3. Text formatting may be disrupted in the final output, especially when multiple entity types are redacted close together. 
+4. Matching conceptual terms is case-sensitive and dependent on the accuracy of phrase matching. 
 
 
